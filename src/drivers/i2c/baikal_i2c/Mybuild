@@ -1,0 +1,27 @@
+package embox.driver.i2c
+
+module baikal_i2c_drv {
+	option string log_level="LOG_ERR"
+
+	source "baikal_i2c_drv.c"
+
+	depends embox.driver.i2c_core
+}
+
+module baikal_i2c0 {
+	option string log_level="LOG_ERR"
+
+	source "baikal_i2c0.c"
+
+	depends embox.driver.i2c_core
+	@NoRuntime depends baikal_i2c_drv
+}
+
+module baikal_i2c1 {
+	option string log_level="LOG_ERR"
+
+	source "baikal_i2c1.c"
+
+	depends embox.driver.i2c_core
+	@NoRuntime depends baikal_i2c_drv
+}
